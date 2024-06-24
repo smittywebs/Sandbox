@@ -1,37 +1,34 @@
 import turtle
+turtle.speed(0)
+turtle.shape("turtle")
 
-def rectangle(len):
-    for i in range(4):
-        turtle.forward(5)
-        turtle.right(90)
-        turtle.forward(100)
-        turtle.right(90)
-        turtle.forward(5)
-        
-
-def octagon(len):
+def octagon(width, color):
     for i in range(8):
-        turtle.forward(40)
+        turtle.color(color)
+        turtle.forward(width)
         turtle.left(45)
 
-def sign(len):
-    rectangle(len)
-    turtle.penup()
-    turtle.backward(20)
-    turtle.pendown()
-    octagon(len)
+def rectangle(width, height, color):
+    for i in range(2):
+       turtle.color(color)
+       turtle.forward(width)
+       turtle.right(90)
+       turtle.forward(height)
+       turtle.right(90)
 
-def main():
-    turtle.speed(0)
-    turtle.shape("turtle")
-    turtle.color("blue")
-    sign(100)
+def stop(width, color):
+    octagon(width, color)
     turtle.penup()
-    turtle.color("red")
-    turtle.forward(150)
+    turtle.forward(width * .375)
     turtle.pendown()
-    sign(50)
-    turtle.hideturtle()
-main()
+    rectangle(width * .2, width * 2, color)
+    turtle.penup()
+
+stop(width= 50, color= "red")
+turtle.penup()
+turtle.forward(150)
+turtle.pendown()
+stop(width = 20, color =  "blue")
+turtle.hideturtle()
  
 turtle.Screen().exitonclick()
